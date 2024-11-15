@@ -1,10 +1,10 @@
 import express, { Router } from "express";
 import authRouter from "./auth";
-import tasksRouter from "./tasks";
+import carsRouter from "./cars";
 
 const router: Router = express.Router();
 
 router.use("/auth", authRouter);
-router.use("/tasks", tasksRouter);
+router.use("/cars", carsRouter);
 
 export default router;

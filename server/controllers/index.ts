@@ -1,4 +1,4 @@
 import * as auth from "./auth";
-import * as tasks from "./tasks";
+import * as cars from "./cars";
 
-export const controllers = {auth, tasks};
+export const controllers = {auth, cars};

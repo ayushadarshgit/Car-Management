@@ -1,24 +1,25 @@
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 
-interface PrimaryModalProps {
-    icon?: React.ReactElement,
+interface ModalWithTextProps {
     label: string,
     title: string,
     description: string,
-    open: boolean,
-    setOpen: Dispatch<SetStateAction<boolean>>,
+    open?: boolean,
+    setOpen?: Dispatch<SetStateAction<boolean>>,
     children: React.ReactNode
 }
 
-const PrimaryModal: React.FC<PrimaryModalProps> = ({ icon, label, title, description, open, setOpen, children }) => {
+const ModalWithText: React.FC<ModalWithTextProps> = ({ label, title, description, open, setOpen, children }) => {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button className='gap-2'>{icon} {label}</Button>
+                <p className='w-full'>
+                    {label}
+                </p>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-black max-h-[80%] overflow-y-auto" onKeyDown={(e) => e.stopPropagation()}>
+            <DialogContent className="sm:max-w-[425px] bg-black" onKeyDown={(e) => e.stopPropagation()} onMouseMove={(e) => e.stopPropagation()}>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>
@@ -31,4 +32,4 @@ const PrimaryModal: React.FC<PrimaryModalProps> = ({ icon, label, title, descrip
     )
 }
 
-export default PrimaryModal
+export default ModalWithText

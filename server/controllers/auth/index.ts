@@ -68,7 +68,7 @@ export const boot = async (req: AuthRequest, res: Response) => {
     }
 
     try {
-        const findUser = await user.findById(id).select("name email -_id");
+        const findUser = await user.findById(id).select("name email");
         return res.status(200).json({message: "fetched boot data", data: findUser});
     } catch (err) {
         return res.status(500).json({message: "Something Went Wrong!"});

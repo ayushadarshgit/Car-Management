@@ -4,8 +4,8 @@ import { StoreProvider } from "@/store/StoreProvider";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Kaban Board",
-  description: "Kaban board for tracking project progress"
+  title: "Caro",
+  description: "Car Management"
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
+      <html lang="en" className="modified-scrollbar">
         <body>
           <div className="flex min-h-screen w-full flex-col">
             {children}

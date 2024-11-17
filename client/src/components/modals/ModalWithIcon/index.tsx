@@ -17,7 +17,7 @@ const ModalWithIcon: React.FC<ModalWithIconProps> = ({ icon, title, description,
             <DialogTrigger asChild>
                 {icon}
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-black">
+            <DialogContent className="sm:max-w-[425px] bg-black" onKeyDown={(e) => e.stopPropagation()} onMouseMove={(e) => e.stopPropagation()}>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>

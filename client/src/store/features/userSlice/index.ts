@@ -1,12 +1,14 @@
-import { createAsyncThunk, createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface initialState {
+    _id?: string,
     name?: string,
     email?: string,
     isLoggedIn: boolean
 }
 
 const initialState: initialState = {
+    _id: undefined,
     name: undefined,
     email: undefined,
     isLoggedIn: false
@@ -20,7 +22,7 @@ const userSlice = createSlice({
         setLoggedin: (state, action: PayloadAction <boolean>) => {
             state.isLoggedIn = action.payload;
         },
-        setBootData: (_, action: PayloadAction <{name: string, email: string, isLoggedIn: boolean}>) => {
+        setBootData: (_, action: PayloadAction <{_id: string, name: string, email: string, isLoggedIn: boolean}>) => {
             return {...action.payload};
         }
     }

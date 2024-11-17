@@ -1,11 +1,11 @@
-import express, { Express } from "express";
 import dotenv from "dotenv";
+dotenv.config();
+
+import express, { Express } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import router from "./routes";
-
-dotenv.config();
 
 const app: Express = express();
 

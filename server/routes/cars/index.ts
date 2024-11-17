@@ -5,12 +5,9 @@ import { verifyJWT } from '../../middleware/auth';
 const router: Router = express.Router();
 
 router.use(verifyJWT);
-router.post("/createCar", controllers.cars.createCar);
-router.get("/getUserCars", controllers.cars.getUserCars);
-router.get("/getCarsByKeyword", controllers.cars.getCarsByKeyword);
-router.get("/getAllCars", controllers.cars.getAllCars);
-router.post("/updateCar/:id", controllers.cars.updateCar);
-router.delete("/deleteCar/:id", controllers.cars.deleteCar);
-
+router.get("/", controllers.cars.get);
+router.post("/create", controllers.cars.create);
+router.put("/:id", controllers.cars.update);
+router.delete("/:id", controllers.cars.remove);
 
 export default router;

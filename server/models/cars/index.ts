@@ -10,14 +10,19 @@ const carSchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
     },
     images: {
       type: [String],
+      required: true,
+      validate: {
+        validator: function (value: string []) {
+          return Array.isArray(value) && value.length > 0; // Ensure at least one element
+        },
+        message: "there must be at least one image.",
+      },
     },
     tags: {
       type: [String],
-      required: true,
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -27,5 +32,7 @@ const carSchema = new Schema(
   },
   { timestamps: true }
 );
+
+carSchema.index({ title: 'text', description: "text", tags: "text" });
 
 export default mongoose.model("Car", carSchema);

@@ -49,9 +49,9 @@ export const get = async (req: AuthRequest, res: Response) => {
         const numberOfRecords = await cars.find(mongoQuery).countDocuments();
         const fetchedCars = await cars.find(mongoQuery).skip((page - 1) * limit).limit(limit);
         return res.status(200).json({data: fetchedCars, totalPages: Math.ceil(numberOfRecords / limit), currentPage: page, message: "Successfully fetched Cars!"});
-    } catch (err) {
+    } catch (err: any) {
         console.log(err);
-        return res.status(500).json({ message: "Some error fetching the cars" });
+        return res.status(500).json({message: err.message || "Something Went Wrong!"});
     }
 }
 
@@ -70,9 +70,9 @@ export const getCarById = async (req: AuthRequest, res: Response) => {
         }
 
         res.status(200).json(car);
-    } catch (error) {
-        console.error("Error fetching car:", error);
-        res.status(500).json({ message: "Error fetching car" });
+    } catch (err: any) {
+        console.error("Error fetching car:", err);
+        res.status(500).json({ message: err.message || "Something Went Wrong!" });
     }
 };
 
@@ -124,9 +124,9 @@ export const update = async (
             message: "Car updated successfully",
             car: updatedCar,
         });
-    } catch (error) {
-        console.error("Error updating car:", error);
-        res.status(500).json({ message: "Error updating car" });
+    } catch (err: any) {
+        console.error("Error updating car:", err);
+        res.status(500).json({ message: err.message || "Something Went Wrong!" });
     }
 };
 
@@ -156,8 +156,8 @@ export const remove = async (req: AuthRequest, res: Response) => {
         await car.deleteOne();
 
         res.status(200).json({ message: "Car deleted successfully" });
-    } catch (error) {
-        console.error("Error deleting car:", error);
-        res.status(500).json({ message: "Error deleting car" });
+    } catch (err: any) {
+        console.error("Error deleting car:", err);
+        res.status(500).json({message: err.message || "Something Went Wrong!"});
     }
 };

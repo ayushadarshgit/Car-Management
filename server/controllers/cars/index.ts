@@ -62,7 +62,7 @@ export const getCarById = async (req: AuthRequest, res: Response) => {
 
     try {
         // Find the car by ID
-        const car = await cars.findById(id);
+        const car = await cars.findById(id).populate("user");
 
         if (!car) {
             res.status(404).json({ message: "Car not found" });

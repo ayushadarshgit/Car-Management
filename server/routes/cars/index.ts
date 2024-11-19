@@ -6,6 +6,7 @@ const router: Router = express.Router();
 
 router.use(verifyJWT);
 router.get("/", controllers.cars.get);
+router.get("/:id", controllers.cars.getCarById)
 router.post("/create", controllers.cars.create);
 router.put("/:id", controllers.cars.update);
 router.delete("/:id", controllers.cars.remove);

@@ -4,4 +4,8 @@ export type Car = {
     description: string;
     images: string [];
     tags: string [];
+    user?: {
+        name: string,
+        email: string
+    }
 }

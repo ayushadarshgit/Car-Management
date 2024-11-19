@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@/components/ui/context-menu';
 import axiosInstance from '@/api/axiosInstance';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 interface CarCardProps extends Car {
     onDelete?: (_id: string) => Promise<void>;
@@ -23,6 +24,7 @@ const CarCard: React.FC<CarCardProps> = ({ _id, title, description, images, tags
     const [loading, setLoading] = useState(false);
     const [editVisible, setEditVisible] = useState<boolean>(false);
     const toast = useToast();
+    const router = useRouter();
 
     const handleDelete = async () => {
         setLoading(true);
@@ -47,7 +49,7 @@ const CarCard: React.FC<CarCardProps> = ({ _id, title, description, images, tags
     }
 
     return (
-        <div className={cn("space-y-3", className)}>
+        <div className={cn("space-y-3 hover:cursor-pointer", className)} onClick={() => router.push("/car/" + _id)}>
             <ContextMenu>
                 <ContextMenuTrigger disabled={!showUpdateOptions}>
                     <div className="overflow-hidden rounded-md">

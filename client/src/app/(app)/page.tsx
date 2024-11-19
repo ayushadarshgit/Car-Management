@@ -26,7 +26,7 @@ const Cars = () => {
   const fetchCars = async () => {
     setLoading(true);
     try {
-      const response = await axiosInstance.get("/cars", { params: { user: user._id, page: searchParams.get("page") || 1, limit: searchParams.get("limit") || 20, search: searchParams.get("search") || undefined } });
+      const response = await axiosInstance.get("/cars", { params: { page: searchParams.get("page") || 1, limit: searchParams.get("limit") || 20, search: searchParams.get("search") || undefined } });
       setCars([...response.data.data]);
       setTotalPages(response.data.totalPages);
       toast.toast({ title: response.data.message });

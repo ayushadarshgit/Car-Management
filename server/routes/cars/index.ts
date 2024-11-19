@@ -111,7 +111,91 @@ router.use(verifyJWT);
  */
 router.get("/", controllers.cars.get);
 
-
+/**
+ * @swagger
+ * /cars/{id}:
+ *   get:
+ *     summary: Get car by ID
+ *     description: Retrieve a car's details by its unique ID. Includes user details associated with the car.
+ *     tags:
+ *       - Cars
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The unique identifier of the car.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved car details.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   description: Unique identifier for the car
+ *                   example: 61c74c94c8c38f001f0c412a
+ *                 title:
+ *                   type: string
+ *                   description: Title of the car listing
+ *                   example: Tesla Model S
+ *                 description:
+ *                   type: string
+ *                   description: Detailed description of the car
+ *                   example: A fully electric sedan with autopilot features.
+ *                 images:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                   description: URLs of car images
+ *                   example: ["https://example.com/image1.jpg", "https://example.com/image2.jpg"]
+ *                 tags:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                   description: Tags for categorizing the car
+ *                   example: ["electric", "sedan"]
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                       example: "634e8b9f1f3c2e001fc8b9d5"
+ *                     name:
+ *                       type: string
+ *                       example: "John Doe"
+ *                     email:
+ *                       type: string
+ *                       example: "johndoe@example.com"
+ *                 createdAt:
+ *                       type: string
+ *                       format: date-time
+ *                       description: The date and time when the car was created
+ *                       example: 2024-11-19T10:00:00Z
+ *       404:
+ *         description: Car not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Car not found"
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Something Went Wrong!"
+ */
 router.get("/:id", controllers.cars.getCarById)
 
 
@@ -210,8 +294,6 @@ router.get("/:id", controllers.cars.getCarById)
  *                   description: Error message
  *                   example: Something Went Wrong!
  */
-
-
 router.post("/create", controllers.cars.create);
 
 
@@ -357,8 +439,6 @@ router.post("/create", controllers.cars.create);
  *                   description: Error message
  *                   example: Something Went Wrong!
  */
-
-
 router.put("/:id", controllers.cars.update);
 
 /**

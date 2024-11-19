@@ -28,7 +28,6 @@ const page = () => {
         setLoading(true);
         try {
             const response = await axiosInstance.get("/cars/" + params.carId);
-            console.log(response.data);
             setCarData(response.data);
         } catch (err: any) {
             console.log(err);

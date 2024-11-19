@@ -75,6 +75,41 @@ export const boot = async (req: AuthRequest, res: Response) => {
     }
 }
 
+
+/**
+ * @swagger
+ * /auth/logout:
+ *   post:
+ *     summary: User Logout
+ *     description: Log out the authenticated user by clearing the session cookie.
+ *     tags:
+ *       - Authentication
+ *     responses:
+ *       '200':
+ *         description: Logout successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message
+ *                   example: Logged Out Successfully!
+ *       '500':
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message
+ *                   example: Something Went Wrong!
+ */
+
+
 export const logout = async (req: AuthRequest, res: Response) => {
     res.clearCookie("JWT_HTTPONLY_Cookie");
     return res.status(200).json({message: "Logged Out Successfully!"});

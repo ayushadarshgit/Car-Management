@@ -14,7 +14,7 @@ const app: Express = express();
 // app.use(cors());
 
 const corsOptions = {
-  origin: 'https://car-management-bice.vercel.app/', // Your frontend URL
+  origin: 'https://car-management-bice.vercel.app', // Your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204

@@ -12,6 +12,16 @@ import router from "./routes";
 const app: Express = express();
 
 app.use(cors());
+
+const corsOptions = {
+  origin: 'https://car-management-bice.vercel.app', // Your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+// Apply the CORS middleware to all routes
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));

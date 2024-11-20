@@ -11,7 +11,7 @@ import router from "./routes";
 
 const app: Express = express();
 
-app.use(cors());
+// app.use(cors());
 
 const corsOptions = {
   origin: 'https://car-management-bice.vercel.app', // Your frontend URL
